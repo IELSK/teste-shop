@@ -43,26 +43,6 @@ export class OrderRepository {
         }
     }
 
-    // private insertItems = async (orderId: Number, products: Product[]): Promise<any> => {
-    //     try {
-    //         products.forEach(product => {
-    //             connection.insert({
-    //                 order_id: orderId,
-    //                 product_id: product.id,
-    //                 qty: product.quantityOrder
-    //             }).table('shopper_order_products')
-
-    //             console.log(`Item ${product.id} was inserted succesfully.`)
-    //             this.productRepository.updateStock("-", product.id, product.quantityOrder)
-    //         })
-    //     } catch (error) {
-    //         if (error instanceof Error) {
-    //             console.log("Error inserting order")
-    //             throw new Error(error.message);
-    //         }
-    //     }
-    // }
-
     private insertItems = async (orderId: Number, products: Product[]) : Promise<any> => {
         products.forEach(product => {
             connection.insert({
