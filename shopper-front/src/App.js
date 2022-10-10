@@ -1,7 +1,6 @@
 import "./App.css";
 import { useCallback, useEffect, useState } from "react";
 import useForm from "./hooks/useForm";
-import "react-bootstrap-typeahead/css/Typeahead.css";
 import Header from "./components/layouts/Header";
 import { listProducts } from "./services/product";
 import { postOrder } from "./services/order";
