@@ -217,7 +217,7 @@ function App() {
                   renderOption={(props, option) => (
                     <p {...props} key={option.id}>
                       {option.name}
-                      <br></br> Estoque:{option.quantityStock}
+                      <br /> Estoque:{option.quantityStock}
                     </p>
                   )}
                   options={products}
