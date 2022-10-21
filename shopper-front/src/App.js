@@ -182,7 +182,7 @@ function App() {
           <div className="flex justify-center">
             <div className="flex w-2/3">
               <span className="flex flex-col mr-2 w-1/2 md:w-4/6">
-                <span className="text-xs md:text-base">Nome do cliente</span>
+                <span>Nome do cliente</span>
                 <TextField
                   name="customerName"
                   value={form.customerName}
@@ -190,7 +190,7 @@ function App() {
                 />
               </span>
               <span className="flex flex-col w-1/2 md:w-1/4">
-                <span className="text-xs md:text-base">Data de entrega</span>
+                <span>Data de entrega</span>
                 <TextField
                   name="deliveryDate"
                   type="date"
@@ -203,11 +203,12 @@ function App() {
           <div className="flex justify-center">
             <div className="flex items-end w-2/3">
               <span className="flex flex-col mr-2 w-4/6">
-                <span className="text-xs md:text-base">
-                  Adicionar produtos:
-                </span>
+                <span>Adicionar produtos:</span>
                 <Autocomplete
                   onChange={(event, newValue) => {
+                    if (newValue === null) {
+                      newValue = "Não vazio"
+                    }
                     setSelected(newValue);
                   }}
                   isOptionEqualToValue={(option, value) =>
@@ -217,7 +218,8 @@ function App() {
                   renderOption={(props, option) => (
                     <p {...props} key={option.id}>
                       {option.name}
-                      <br /> Estoque:{option.quantityStock}
+                      <br />
+                      Estoque:{option.quantityStock}
                     </p>
                   )}
                   options={products}
@@ -227,7 +229,7 @@ function App() {
                 />
               </span>
               <span className="flex flex-col w-2/6">
-                <span className="text-xs md:text-base">Quantidade:</span>
+                <span>Quantidade:</span>
                 <TextField value={quantity} onChange={onChangeQuantity} />
               </span>
               <span className="w-1/6">
