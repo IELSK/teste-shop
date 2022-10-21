@@ -99,6 +99,7 @@ function App() {
 
   const editProduct = (product) => {
     setSelected(product);
+    console.log(selected)
     setQuantity(product.quantityOrder);
   };
 
@@ -214,9 +215,9 @@ function App() {
                   isOptionEqualToValue={(option, value) =>
                     option.id === value.id
                   }
-                  getOptionLabel={(option) => option.name}
+                  getOptionLabel={() => selected.name}
                   renderOption={(props, option) => (
-                    <p {...props}>
+                    <p {...props} key={option.id}>
                       {option.name}
                       <br></br> Estoque:{option.quantityStock}
                     </p>
