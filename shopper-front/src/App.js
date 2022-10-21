@@ -99,7 +99,6 @@ function App() {
 
   const editProduct = (product) => {
     setSelected(product);
-    console.log(selected)
     setQuantity(product.quantityOrder);
   };
 
@@ -156,7 +155,7 @@ function App() {
   useEffect(() => {
     listProducts(setProducts);
     orderTotal();
-  }, [orderTotal]);
+  }, [orderTotal, selected]);
 
   return (
     <div>
@@ -211,11 +210,10 @@ function App() {
                   onChange={(event, newValue) => {
                     setSelected(newValue);
                   }}
-                  value={selected.name}
                   isOptionEqualToValue={(option, value) =>
                     option.id === value.id
                   }
-                  getOptionLabel={(option) => selected.name}
+                  getOptionLabel={(option) => selected.name ?? option.name}
                   renderOption={(props, option) => (
                     <p {...props} key={option.id}>
                       {option.name}
