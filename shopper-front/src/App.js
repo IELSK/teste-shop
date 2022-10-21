@@ -215,7 +215,7 @@ function App() {
                   isOptionEqualToValue={(option, value) =>
                     option.id === value.id
                   }
-                  getOptionLabel={() => selected.name}
+                  getOptionLabel={(option) => selected.name}
                   renderOption={(props, option) => (
                     <p {...props} key={option.id}>
                       {option.name}
