@@ -25,20 +25,29 @@ export class OrderService {
         }
 
         const productHasNoStockList: any[] = []
-        
-        await Promise.all(
-          order.products.map((product) => {
-            this.productService.getById(product.id)
-                .then(res => {
-                    if(res.quantityOrder > product.quantityStock) productHasNoStockList.push(product)
-                });
-          })
-        )
 
-        if(productHasNoStockList.length > 0) {
+        //   order.products.map(async (product) => {
+        //     this.productService.getById(product.id)
+        //         .then(res => {
+        //             console.log(res.quantityStock)
+        //             if(res.quantityStock < product.quantityOrder)  productHasNoStockList.push(product)
+        //         });
+        //   })
+
+        for (const product of order.products) {
+            const result = await this.productService.getById(product.id)
+            if (result.quantityStock < product.quantityOrder) productHasNoStockList.push(product)
+        }
+
+
+
+
+
+        if (productHasNoStockList.length > 0) {
             throw new ProductHasNoStockError(productHasNoStockList)
         }
-        
+
+
         return await this.orderRepository.create(order)
 
     }
