@@ -33,9 +33,11 @@ export class OrderRepository {
 
     listAll = async (): Promise<any> => {
         try {
-            const result = await connection.select('id', 'customer_name as customerName', 'delivery_date as deliveryDate', 'total')
+            const result = await connection
+                .select('id', 'customer_name as customerName', 'delivery_date as deliveryDate', 'total')
                 .table('shopper_order')
-            return result[0][0]
+                console.log(result)
+            return result
         } catch (error) {
             if (error instanceof Error) {
                 throw new Error(error.message);
@@ -50,7 +52,7 @@ export class OrderRepository {
                 product_id: product.id,
                 qty: product.quantityOrder
             }).table('shopper_order_products')
-                .then(result => {
+                .then(() => {
                     console.log(`Item ${product.id} was inserted succefully.`)
                     this.productRepository.updateStock('-', product.id, product.quantityOrder)
                 })

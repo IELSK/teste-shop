@@ -8,9 +8,8 @@ export class App {
     public app: express.Application;
 
     constructor(controllers: Controller[]) {
-        this.app = express()
-        this.initializeMiddlewares(controllers)
-        
+        this.app = express();
+        this.initializeMiddlewares(controllers);
     }
 
     public listen(port: number) {

@@ -24,7 +24,5 @@ export class ProductsController implements Controller {
                     return res.status(204)
                 }
             })
-
-        
     }
 }
