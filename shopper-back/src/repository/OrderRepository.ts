@@ -18,7 +18,6 @@ export class OrderRepository {
                 delivery_date: order.deliveryDate,
                 total: order.total
             }).table('shopper_order')
-            console.log(order.products)
             this.insertItems(result[0], order.products)
             console.log("Order was created succesfully.")
 
@@ -36,7 +35,6 @@ export class OrderRepository {
             const result = await connection
                 .select('id', 'customer_name as customerName', 'delivery_date as deliveryDate', 'total')
                 .table('shopper_order')
-                console.log(result)
             return result
         } catch (error) {
             if (error instanceof Error) {

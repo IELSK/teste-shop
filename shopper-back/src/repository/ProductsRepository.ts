@@ -10,7 +10,6 @@ export class ProductsRepository {
             const result = await connection
                 .select('id', 'name', 'price', 'qty_stock as quantityStock')
                 .table(ProductsRepository.TABLE_NAME)
-            console.log(result)
             return result
         } catch (error) {
             if (error instanceof Error) {
