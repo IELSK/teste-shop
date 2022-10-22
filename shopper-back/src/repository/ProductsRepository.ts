@@ -1,9 +1,8 @@
 import { connection } from "../connection";
-import { Product } from "../entity/Product";
 
 export class ProductsRepository {
 
-    private static TABLE_NAME = "shopper_products";
+    private static TABLE_NAME: string = "shopper_products";
 
     listAll = async (): Promise<any> => {
         try {

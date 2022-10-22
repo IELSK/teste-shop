@@ -30,7 +30,7 @@ export class OrderService {
           order.products.map((product) => {
             this.productService.getById(product.id)
                 .then(res => {
-                    if(res.quantityOrder <= product.quantityStock) productHasNoStockList.push(product)
+                    if(res.quantityOrder < product.quantityStock) productHasNoStockList.push(product)
                 });
           })
         )
