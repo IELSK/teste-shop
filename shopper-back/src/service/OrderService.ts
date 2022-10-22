@@ -26,21 +26,10 @@ export class OrderService {
 
         const productHasNoStockList: any[] = []
 
-        //   order.products.map(async (product) => {
-        //     this.productService.getById(product.id)
-        //         .then(res => {
-        //             console.log(res.quantityStock)
-        //             if(res.quantityStock < product.quantityOrder)  productHasNoStockList.push(product)
-        //         });
-        //   })
-
         for (const product of order.products) {
             const result = await this.productService.getById(product.id)
             if (result.quantityStock < product.quantityOrder) productHasNoStockList.push(product)
         }
-
-
-
 
 
         if (productHasNoStockList.length > 0) {
