@@ -8,7 +8,7 @@ export class ProductHasNoStockError extends Error {
 
         let message = "Product has no stock. IDs: "
         products.forEach(product => {
-            message = message + `${product.id}`
+            message = message + `${product.id} `
         })
 
         super(`${message}`)

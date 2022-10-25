@@ -10,4 +10,4 @@ const app = new App([
     new OrderController()
 ])
 
-app.listen(Number(process.env.DB_PORT))
+app.listen(3306)

@@ -6,6 +6,8 @@ import { ProductsRepository } from "./ProductsRepository";
 export class OrderRepository {
 
     private productRepository: ProductsRepository
+    private static ORDER_TABLE_NAME: string = "shopper_order";
+    private static ORDER_PRODUCTS_TABLE_NAME: string = "shopper_order_products";
 
     constructor() {
         this.productRepository = new ProductsRepository()
@@ -17,7 +19,7 @@ export class OrderRepository {
                 customer_name: order.customerName,
                 delivery_date: order.deliveryDate,
                 total: order.total
-            }).table('shopper_order')
+            }).table(OrderRepository.ORDER_TABLE_NAME)
             this.insertItems(result[0], order.products)
             console.log("Order was created succesfully.")
 
@@ -34,7 +36,7 @@ export class OrderRepository {
         try {
             const result = await connection
                 .select('id', 'customer_name as customerName', 'delivery_date as deliveryDate', 'total')
-                .table('shopper_order')
+                .table(OrderRepository.ORDER_TABLE_NAME)
             return result
         } catch (error) {
             if (error instanceof Error) {
@@ -49,7 +51,7 @@ export class OrderRepository {
                 order_id: orderId,
                 product_id: product.id,
                 qty: product.quantityOrder
-            }).table('shopper_order_products')
+            }).table(OrderRepository.ORDER_PRODUCTS_TABLE_NAME)
                 .then(() => {
                     console.log(`Item ${product.id} was inserted succefully.`)
                     this.productRepository.updateStock('-', product.id, product.quantityOrder)
