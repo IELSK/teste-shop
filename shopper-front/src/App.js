@@ -78,12 +78,10 @@ function App() {
       quantityOrder: Number(quantity),
     };
 
-    const filteredProducts = form.products.filter((addedProduct) => {
-      if (addedProduct.id === product.id) {
-        return false;
-      }
-      return true;
-    });
+    const filteredProducts = form.products.filter((addedProduct) =>  addedProduct.id !== product.id
+ 
+    );
+
     setForm({
       ...form,
       products: [...filteredProducts, product],
