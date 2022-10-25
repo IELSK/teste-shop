@@ -219,6 +219,11 @@ function App() {
                     <p {...props} key={option.id}>
                       {option.name}
                       <br />
+                      {option.price.toLocaleString("pt-br", {
+                style: "currency",
+                currency: "BRL",
+              })}
+                      <br />
                       Estoque:{option.quantityStock}
                     </p>
                   )}
