@@ -78,8 +78,8 @@ function App() {
       quantityOrder: Number(quantity),
     };
 
-    const filteredProducts = form.products.filter((addedProduct) =>  addedProduct.id !== product.id
- 
+    const filteredProducts = form.products.filter(
+      (addedProduct) => addedProduct.id !== product.id
     );
 
     setForm({
@@ -91,12 +91,10 @@ function App() {
   };
 
   const deleteProduct = (productId) => {
-    const updatedProducts = form.products.filter((product) => {
-      if (product.id === productId) {
-        return false;
-      }
-      return true;
-    });
+    const updatedProducts = form.products.filter(
+      (product) => product.id !== productId
+    );
+
     setForm({
       ...form,
       products: updatedProducts,
@@ -213,7 +211,7 @@ function App() {
                 <Autocomplete
                   onChange={(event, newValue) => {
                     if (newValue === null) {
-                      newValue = "campo vazio"
+                      newValue = "campo vazio";
                     }
                     setSelected(newValue);
                   }}
@@ -226,9 +224,9 @@ function App() {
                       {option.name}
                       <br />
                       {option.price.toLocaleString("pt-br", {
-                style: "currency",
-                currency: "BRL",
-              })}
+                        style: "currency",
+                        currency: "BRL",
+                      })}
                       <br />
                       Estoque:{option.quantityStock}
                     </p>
