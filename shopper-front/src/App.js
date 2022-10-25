@@ -9,7 +9,7 @@ import CustomButton from "./components/buttons/CustomButton";
 
 function App() {
   const [updatedTotal, setUpdatedTotal] = useState(0);
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState({});
   const [showAlertError, setShowAlertError] = useState(false);
   const [showAlertSuccess, setShowAlertSuccess] = useState(false);
   const [alertMessageError, setAlertMessageError] = useState("");
@@ -51,6 +51,11 @@ function App() {
   };
 
   const onClickAddProduct = () => {
+    if (selected === "campo vazio") {
+      setAlertMessageError("Escolha o produto.");
+      setShowAlertError(true);
+      return;
+    }
     if (quantity === null || quantity === "" || quantity <= 0) {
       setAlertMessageError("Você precisa escolher a quantidade desejada.");
       setShowAlertError(true);
@@ -212,7 +217,7 @@ function App() {
                 <Autocomplete
                   onChange={(event, newValue) => {
                     if (newValue === null) {
-                      newValue = "Não vazio"
+                      newValue = "campo vazio"
                     }
                     setSelected(newValue);
                   }}
