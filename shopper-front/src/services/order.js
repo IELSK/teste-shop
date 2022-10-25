@@ -11,7 +11,7 @@ export const postOrder = (
 ) => {
     const url = `${API_URL}/orders`
   axios
-    .post(url, body, {})
+    .post(url, body)
     .then((res) => {
       setShowAlertSuccess(true);
       clearForm();
