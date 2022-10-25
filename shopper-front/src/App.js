@@ -56,18 +56,15 @@ function App() {
       setAlertMessageError("Escolha o produto.");
       setShowAlertError(true);
       return;
-    }
-    if (quantity === null || quantity === "" || quantity <= 0) {
+    } else if (quantity === null || quantity === "" || quantity <= 0) {
       setAlertMessageError("Você precisa escolher a quantidade desejada.");
       setShowAlertError(true);
       return;
-    }
-    if (quantity > selected.quantityStock) {
+    } else if (quantity > selected.quantityStock) {
       setAlertMessageError("A quantidade que você deseja não esta disponível.");
       setShowAlertError(true);
       return;
-    }
-    if (isNaN(quantity)) {
+    } else if (isNaN(quantity)) {
       setAlertMessageError("A quantidade inserida deve ser um número.");
       setShowAlertError(true);
       return;
