@@ -153,7 +153,6 @@ function App() {
   const clearFields = () => {
     setQuantity("");
     setUpdatedTotal(0);
-    setAlertMessageError(false);
   };
 
   useEffect(() => {
