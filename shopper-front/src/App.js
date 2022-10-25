@@ -61,6 +61,11 @@ function App() {
       setShowAlertError(true);
       return;
     }
+    if (isNaN(quantity)) {
+      setAlertMessageError("A quantidade inserida deve ser um número.");
+      setShowAlertError(true);
+      return;
+    }
 
     const product = {
       id: selected.id,
@@ -233,7 +238,7 @@ function App() {
                   )}
                 />
               </span>
-              <span className="flex flex-col w-2/6">
+              <span className="flex flex-col w-1/6">
                 <span>Quantidade:</span>
                 <TextField value={quantity} onChange={onChangeQuantity} />
               </span>
