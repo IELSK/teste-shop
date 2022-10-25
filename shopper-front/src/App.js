@@ -46,7 +46,8 @@ function App() {
       clearForm,
       clearFields,
       setShowAlertSuccess,
-      setShowAlertError
+      setShowAlertError,
+      setAlertMessageError
     );
   };
 
@@ -163,7 +164,7 @@ function App() {
   };
 
   useEffect(() => {
-    listProducts(setProducts);
+    listProducts(setProducts, setShowAlertError, setAlertMessageError);
     orderTotal();
   }, [orderTotal, selected]);
 

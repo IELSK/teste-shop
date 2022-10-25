@@ -6,7 +6,8 @@ export const postOrder = (
   clearForm,
   clearFields,
   setShowAlertSuccess,
-  setShowAlertError
+  setShowAlertError,
+  setAlertMessageError
 ) => {
     const url = `${API_URL}/orders`
   axios
@@ -18,7 +19,8 @@ export const postOrder = (
     })
     .catch((err) => {
       console.log(err);
-      setShowAlertError("Não foi possível criar seu pedido.");
+      setShowAlertError(true);
+      setAlertMessageError("Não foi possível criar seu pedido.");
       clearForm();
       clearFields();
     });
